@@ -20,7 +20,7 @@ export const App: React.FunctionComponent = () => {
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/test" element={<TrivialTemplateCreation />}>
+          <Route path="/test" element={<TrivialTemplateCreation gameObj={{name:"test",chapters:[]}} />}>
           </Route>
       </Routes>
     </BrowserRouter>
