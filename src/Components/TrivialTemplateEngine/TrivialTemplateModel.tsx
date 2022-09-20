@@ -13,9 +13,10 @@ export interface Chapter
 
 export interface Page
 {
-    name: string;
-    backGroundImage: File|String;
-    questions: question[];
+    //todo make not optional
+    name?: string;
+    backGroundImage?: File|String;
+    questions?: question[];
 }
 
 export interface question

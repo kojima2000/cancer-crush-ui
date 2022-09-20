@@ -8,7 +8,7 @@ export default function TrivialTemplateCreation(props:{gameObj:TrivialTemplateMo
 
     return(
         <Stack>
-            <div className="ms-Grid">
+            <div className="ms-Grid" dir="ltr">
                 <ChapterCreation chapters={[]}/>
             </div>
         </Stack>

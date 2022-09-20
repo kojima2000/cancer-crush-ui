@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles } from '@fluentui/react';
+import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles, initializeIcons } from '@fluentui/react';
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
@@ -15,8 +15,17 @@ const stackStyles: Partial<IStackStyles> = {
   },
 };
 
+initializeIcons();
 export const App: React.FunctionComponent = () => {
   return (
+    <div>
+      <header>
+            <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
+      />
+    </header>
+    <body>
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home/>}/>
@@ -24,6 +33,8 @@ export const App: React.FunctionComponent = () => {
           </Route>
       </Routes>
     </BrowserRouter>
+    </body>
+    </div>
   );
 };
 
