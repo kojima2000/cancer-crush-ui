@@ -15,13 +15,18 @@ export interface Page
 {
     name: string;
     backGroundImage: File|String;
-    questions: string;
-    choices: choice[];
+    questions: question[];
 }
 
+export interface question
+{
+    name: string | null;
+    description: string;
+    choices: choice[];
+}
 export interface choice
 {   
-    name: string;
+    name: string | null;
     description: string;
     acceptedAnswer: boolean;
 }
