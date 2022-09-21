@@ -3,8 +3,7 @@ import { useState } from "react";
 import PageCreation from "./PageCreation";
 import { Chapter, Page } from "./TrivialTemplateModel";
 
-export default function ChapterCreation(props:{chapters:Chapter[]}){
-
+export default function ChapterCreation({chapters,printGameObject}:{chapters:Chapter[],printGameObject:any}){
     const [currentChapter, setcurrentChapter] = useState(0);
 
     function Icons(props:{pages:Page[]})
@@ -25,23 +24,27 @@ export default function ChapterCreation(props:{chapters:Chapter[]}){
         
         return(
             <Stack>
-                <TextField label="Name" defaultValue={name} onChange={(event:any) => setName(event.target.value)}/>
+                <TextField label="Name" defaultValue={name} onChange={(event:any) => 
+                    {   printGameObject();
+                        setName(event.target.value);
+                    }}/>
                 <TextField label="RenderingDebuging" defaultValue={name}/>
             </Stack>
         ) 
     }
+    console.log(chapters[currentChapter].pages);
     return(
         <Stack>
             <div className="ms-Grid-row">
                 <div className="ms-Grid-col ms-sm12 ms-md4" style={{minHeight:"100%"}}>
                     <DocumentCard>
-                        <div><Icons pages={[{name:"test1"},{name:"test2"},{name:"test3"}]}/></div>
-                        <div><ChapterCreationMenu chapter={{name:"someNameImadeup",pages: [{}]}}/></div>
+                        <div><Icons pages={chapters[currentChapter].pages}/></div>
+                        <div><ChapterCreationMenu chapter={chapters[currentChapter]}/></div>
                     </DocumentCard>
                 </div>
                 <div className="ms-Grid-col ms-sm12 ms-md8" style={{minHeight:"100%"}}>
                     <DocumentCard>
-                        <PageCreation pages={props.chapters[currentChapter]? props.chapters[currentChapter].pages: []}/>
+                        <PageCreation pages={chapters[currentChapter]? chapters[currentChapter].pages: []} printGameObject={printGameObject}/>
                     </DocumentCard>
                 </div>
             </div>

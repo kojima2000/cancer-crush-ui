@@ -1,11 +1,13 @@
 import { Stack } from "@fluentui/react";
+import TemplateForm from "./TemplateForm";
 import { Page } from "./TrivialTemplateModel";
 
-export default function PageCreation(props:{pages:Page[]}){
+export default function PageCreation(props:{pages:Page[],printGameObject:any}){
     return(
         <Stack>
-            <Stack>placeholder</Stack>
-            <Stack>placeholder</Stack>
+            {props.pages.map(function(page, i){
+                return <TemplateForm page={page} key={i} printGameObject={props.printGameObject} />;
+            })}
         </Stack>
     )
 }

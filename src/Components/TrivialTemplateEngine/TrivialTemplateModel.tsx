@@ -13,21 +13,26 @@ export interface Chapter
 
 export interface Page
 {
-    //todo make not optional
+    //todo check on the optionality of this afterwards
     name?: string;
     backGroundImage?: File|String;
-    questions?: question[];
+    description?: string,
+    question?: question;
 }
 
 export interface question
 {
-    name: string | null;
-    description: string;
+    name?: string | null;
+    age: number;
+    sex: string;
+    history: string;
+    description: string; // this is for question
     choices: choice[];
+    caseStudies?: string;
 }
 export interface choice
 {   
-    name: string | null;
+    name?: string | null;
     description: string;
     acceptedAnswer: boolean;
 }
