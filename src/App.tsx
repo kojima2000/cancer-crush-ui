@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import TrivialTemplateCreation from './Components/TrivialTemplateEngine/TrivialTemplateCreation';
+import TrivialRunner from './Components/TrivialRunner/TrivialRunner';
 const boldStyle: Partial<ITextStyles> = { root: { fontWeight: FontWeights.semibold } };
 const stackTokens: IStackTokens = { childrenGap: 15 };
 const stackStyles: Partial<IStackStyles> = {
@@ -12,9 +13,14 @@ const stackStyles: Partial<IStackStyles> = {
     margin: '0 auto',
     textAlign: 'center',
     color: '#605e5c',
-  },
+  },  
 };
-
+let gameTestData={"name":"intialTemplate","chapters":[
+  {"name":"Brai","pages":
+  [{"description":"Submit a quiz question","question":{"age":54,"sex":"Male","history":"Patient was found to have a Right Upper Lobe Adenocarcinoma. He underwent Right Upper Lobe Lobectomy and systematic mediastinal lymph node dissection. Pathology demonstrated a 2.2 cm tumor of adenocarcinoma histology with negative margins. Additionally, there were no visceral pleural invasion and none of the dissected lymph nodes were positive for carcinoma","description":"What is the next best step in the management of this patient?","choices":[{"description":"Check for PD-L1","acceptedAnswer":false},{"description":"Check EGFR mutation status","acceptedAnswer":false},{"description":"4 cycles of platinum-based chemotherapy","acceptedAnswer":false},{"description":"Active surveillance ","acceptedAnswer":true}],"caseStudies":""}},
+  {"description":"Submit a quiz question","question":{"age":54,"sex":"Male","history":"Patient was found to have a Right Upper Lobe Adenocarcinoma. He underwent Right Upper Lobe Lobectomy and systematic mediastinal lymph node dissection. Pathology demonstrated a 2.2 cm tumor of adenocarcinoma histology with negative margins. Additionally, there were no visceral pleural invasion and none of the dissected lymph nodes were positive for carcinoma","description":"What is the next best step in the management of this patient?","choices":[{"description":"Check for PD-L1","acceptedAnswer":false},{"description":"Check EGFR mutation status","acceptedAnswer":false},{"description":"4 cycles of platinum-based chemotherapy","acceptedAnswer":false},{"description":"Active surveillance ","acceptedAnswer":true}],"caseStudies":""}}
+  ]}
+ ,{"name":"","pages":[]}]};
 initializeIcons();
 export const App: React.FunctionComponent = () => {
   return (
@@ -25,15 +31,13 @@ export const App: React.FunctionComponent = () => {
       href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
       />
     </header>
-    <body>
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/test" element={<TrivialTemplateCreation gameObj={{name:"test",chapters:[]}} />}>
-          </Route>
+          <Route path="/test" element={<TrivialTemplateCreation gameObj={{name:"test",chapters:[]}} />}/>
+          <Route path="/game" element={<TrivialRunner trivialTemplateModel={gameTestData}/>} />
       </Routes>
     </BrowserRouter>
-    </body>
     </div>
   );
 };
