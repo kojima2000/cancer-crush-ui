@@ -1,50 +1,61 @@
-import { Stack, TextField ,DocumentCard, ActionButton, IIconProps} from "@fluentui/react";
+import { Stack, TextField ,DocumentCard, ActionButton, IIconProps, CommandButton} from "@fluentui/react";
 import { useState } from "react";
 import PageCreation from "./PageCreation";
 import { Chapter, Page } from "./TrivialTemplateModel";
 
 export default function ChapterCreation({chapters,printGameObject}:{chapters:Chapter[],printGameObject:any}){
-    const [currentChapter, setcurrentChapter] = useState(0);
+    const [currentChapter, setcurrentChapter] = useState(chapters[0]);
 
-    function Icons(props:{pages:Page[]})
+    function Icons({chapters}:{chapters:Chapter[]})
     {
-        const PageIcon: IIconProps = { iconName: "documentData32Regular" };
+        const PageIcon: IIconProps = { iconName: "Document" };
         return (
             <Stack style={{display: "inline"}}>
-            {props.pages.map((page:Page) =>
-                <ActionButton iconProps={PageIcon}>{page.name?.slice(0,Math.max(page.name.length,20))}</ActionButton>
+            {chapters.map((chapter:Chapter) =>
+                <ActionButton iconProps={PageIcon}
+                onClick={()=>setcurrentChapter(chapter)}
+                >{chapter.name?.slice(0,Math.max(chapter.name.length,20))}</ActionButton>
             )}
             </Stack>
         )
     }
 
-    function ChapterCreationMenu(props:{ chapter:Chapter})
+    function createNewChapter()
     {
-        const [name,setName] = useState(props.chapter.name)
-        
+        chapters.push({name:"",pages:[]});
+        setcurrentChapter(chapters[chapters.length-1]);
+        printGameObject();
+    }
+    function ChapterCreationMenu({chapter}:{ chapter:Chapter})
+    {
+        const [name,setName] = useState(chapter.name)
+        const addIcon: IIconProps = { iconName: 'Add' };
         return(
             <Stack>
                 <TextField label="Name" defaultValue={name} onChange={(event:any) => 
                     {   printGameObject();
                         setName(event.target.value);
+                        chapter.name=event.target.value;
                     }}/>
-                <TextField label="RenderingDebuging" defaultValue={name}/>
+                <Stack>
+                    <CommandButton iconProps={addIcon} text="New Question Set" onClick={createNewChapter}/>
+                </Stack>
             </Stack>
         ) 
     }
-    console.log(chapters[currentChapter].pages);
+    console.log(currentChapter?.pages);
     return(
         <Stack>
             <div className="ms-Grid-row">
                 <div className="ms-Grid-col ms-sm12 ms-md4" style={{minHeight:"100%"}}>
                     <DocumentCard>
-                        <div><Icons pages={chapters[currentChapter].pages}/></div>
-                        <div><ChapterCreationMenu chapter={chapters[currentChapter]}/></div>
+                        <div><Icons chapters={chapters}/></div>
+                        <div><ChapterCreationMenu chapter={currentChapter}/></div>
                     </DocumentCard>
                 </div>
                 <div className="ms-Grid-col ms-sm12 ms-md8" style={{minHeight:"100%"}}>
                     <DocumentCard>
-                        <PageCreation pages={chapters[currentChapter]? chapters[currentChapter].pages: []} printGameObject={printGameObject}/>
+                        <PageCreation pages={currentChapter? currentChapter.pages: []} printGameObject={printGameObject}/>
                     </DocumentCard>
                 </div>
             </div>
