@@ -17,10 +17,10 @@ export interface Page
     name?: string;
     backGroundImage?: File|String;
     description?: string,
-    question?: question;
+    question: Question;
 }
 
-export interface question
+export interface Question
 {
     name?: string | null;
     age: number;

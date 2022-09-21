@@ -1,117 +1,98 @@
 import { Checkbox, DefaultButton, getPropsWithDefaults, Stack, TextField } from "@fluentui/react";
 import { useState } from "react";
-import { Page } from "./TrivialTemplateModel";
+import { choice, Page, Question } from "./TrivialTemplateModel";
 
 
-export default function TemplateForm({ page, printGameObject }: {page: Page,printGameObject:any}){
-    const [age, setAge] = useState(page.question?.age);
-    const [sex, setSex] = useState(page.question?.sex);
-    const [history, setHistory] = useState(page.question?.history);
-    const [question, setQuestion] = useState(page.question?.description);
-    const [caseStudies, setCaseStudies] = useState(page.question?.caseStudies);
-    const [choices, setChoices] = useState(page.question?.choices);
+export default function QuestionForm({ question, printGameObject }: {question: Question,printGameObject:any}){
+    const [age, setAge] = useState(question.age);
+    const [sex, setSex] = useState(question.sex);
+    const [history, setHistory] = useState(question.history);
+    const [questionDescription, setQuestion] = useState(question.description);
+    const [caseStudies, setCaseStudies] = useState(question?.caseStudies);
+    const [choices, setChoices] = useState(question.choices);
     const [newChoiceDescription, setNewChoiceDescription] = useState("");
 
     const onChangeAge = (val: number) => {
-        if(page.question)
-        {
-        page.question.age = val;
+        question.age = val;
         setAge(val);
-        }
     }
 
     const onChangeSex = (val: string) => {
-        if(page.question)
-        {
-        page.question.sex = val;
+        question.sex = val;
         setSex(val);
-        }
+
     }
 
     const onChangeHistory = (val: string) => {
-        if(page.question)
-        {
-        page.question.history = val;
+
+        question.history = val;
         setHistory(val);
-        }
+
     }
 
     const onChangeQuestion = (val: string) => {
-        if(page.question)
-        {
+
         setQuestion(val);
-        page.question.description = val;
-        }
+        question.description = val;
+
     }
 
     const onChangeCaseStudies = (val: string) => {
-        if(page.question)
-        {
-        page.question.caseStudies = val;
+
+        question.caseStudies = val;
         setCaseStudies(val);
-        }
+
     }
 
     const onChangeChoice = (val: string, idx: number) => {
-        if(choices)
-        {
+
         choices[idx].description = val;
         setChoices([...choices]);
-        }
     }
 
     const onRemoveChoice = (idx: number) => {
-        if(choices)
-        {
         for(let i = 0; i < choices.length; i++){ 
             if (idx === i) { 
                 choices.splice(i, 1); 
                 break;
             }
         }
-        if(page.question)
-            {
-            page.question.choices = choices;
-            setChoices([...choices]);
-            }
-        }
+
+        question.choices = choices;
+        setChoices([...choices]);
+
     }
 
     const onAddChoice = () => {
-        if(choices)
-        {
+
         choices.push({
             description: newChoiceDescription,
             acceptedAnswer: false
         });
-        if(page.question)
-        {
-        page.question.choices = choices;
+
+        question.choices = choices;
         setNewChoiceDescription("");
         setChoices([...choices]);
-        }
-        }
+
     }
 
     const onSetCorrectAnswer = (idx: number) => {
-        if(choices)
-        {
+
         for (let i = 0; i < choices.length; i++) {
             choices[i].acceptedAnswer = idx === i;
         }
 
         setChoices([...choices]);
-        }
-    }
 
+    }
+    console.log(question.age);
     return(
         <Stack style={{ padding: '20px' }} className="ms-Grid">
-            <div>{page.description}</div>
             <div className="ms-Grid-row">
                 <TextField 
                     label="Patient age" 
                     
-                    value={age?.toString()} 
+                    value={age.toString()} 
                     onChange={(_e, value) => onChangeAge(Number(value))}
                 />
             </div>
@@ -137,12 +118,12 @@ export default function TemplateForm({ page, printGameObject }: {page: Page,prin
                     label="Question" 
                     multiline 
                     
-                    value={question}
+                    value={questionDescription}
                     onChange={(_e, value) => onChangeQuestion(value || '')}
                 />
             </div>
             {
-                choices?.map(function(choice, i){
+                choices?.map(function(choice:choice, i:number){
                     return (<Stack horizontal key={i}>
                         <Stack.Item>
                             <TextField 

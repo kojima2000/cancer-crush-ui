@@ -29,7 +29,6 @@ export default function ChapterCreation({chapters,printGameObject}:{chapters:Cha
     function ChapterCreationMenu({chapter}:{ chapter:Chapter})
     {
         const [name,setName] = useState(chapter.name)
-        const addIcon: IIconProps = { iconName: 'Add' };
         return(
             <Stack>
                 <TextField label="Name" defaultValue={name} onChange={(event:any) => 
@@ -37,19 +36,18 @@ export default function ChapterCreation({chapters,printGameObject}:{chapters:Cha
                         setName(event.target.value);
                         chapter.name=event.target.value;
                     }}/>
-                <Stack>
-                    <CommandButton iconProps={addIcon} text="New Question Set" onClick={createNewChapter}/>
-                </Stack>
             </Stack>
         ) 
     }
     console.log(currentChapter?.pages);
+    const addIcon: IIconProps = { iconName: 'Add' };
     return(
         <Stack>
             <div className="ms-Grid-row">
                 <div className="ms-Grid-col ms-sm12 ms-md4" style={{minHeight:"100%"}}>
                     <DocumentCard>
                         <div><Icons chapters={chapters}/></div>
+                        <CommandButton iconProps={addIcon} text="New Question Set" onClick={createNewChapter}/>
                         <div><ChapterCreationMenu chapter={currentChapter}/></div>
                     </DocumentCard>
                 </div>
