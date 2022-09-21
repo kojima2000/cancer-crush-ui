@@ -21,17 +21,22 @@ export default function PageCreation({pages,printGameObject}:{pages:Page[],print
     }
     function createNewPage()
     {
-        let defalutQuestion={
+
+        pages.push({description:"Fill out form",question:{
             age: 0,
             sex: "",
             history: "",
             description: "",
             choices: []
         
-        }
-        pages.push({description:"Fill out form",question:defalutQuestion});
+        }});
         setCurrentPage(pages[pages.length-1]);
         printGameObject();
+    }
+
+    function setPage()
+    {
+        
     }
     const addIcon: IIconProps = { iconName: 'Add' };
     //removed key, add a uuid generator for key feature

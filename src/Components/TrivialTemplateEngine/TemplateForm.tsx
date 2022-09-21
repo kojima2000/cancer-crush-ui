@@ -1,17 +1,27 @@
 import { Checkbox, DefaultButton, getPropsWithDefaults, Stack, TextField } from "@fluentui/react";
-import { useState } from "react";
-import { choice, Page, Question } from "./TrivialTemplateModel";
+import { useEffect, useState } from "react";
+import { choice, Question } from "./TrivialTemplateModel";
 
 
 export default function QuestionForm({ question, printGameObject }: {question: Question,printGameObject:any}){
+    console.log(question,"render");
     const [age, setAge] = useState(question.age);
     const [sex, setSex] = useState(question.sex);
     const [history, setHistory] = useState(question.history);
-    const [questionDescription, setQuestion] = useState(question.description);
+    const [questionDescription, setQuestionDescription] = useState(question.description);
     const [caseStudies, setCaseStudies] = useState(question?.caseStudies);
     const [choices, setChoices] = useState(question.choices);
     const [newChoiceDescription, setNewChoiceDescription] = useState("");
-
+    useEffect(()=>
+    {
+        setAge(question.age);
+        setSex(question.sex);
+        setHistory(question.history);
+        setQuestionDescription(question.description);
+        setCaseStudies(question?.caseStudies);
+        setChoices(question.choices);
+        setNewChoiceDescription("");
+    },[question])
     const onChangeAge = (val: number) => {
         question.age = val;
         setAge(val);
@@ -32,7 +42,7 @@ export default function QuestionForm({ question, printGameObject }: {question: Q
 
     const onChangeQuestion = (val: string) => {
 
-        setQuestion(val);
+        setQuestionDescription(val);
         question.description = val;
 
     }
@@ -85,7 +95,7 @@ export default function QuestionForm({ question, printGameObject }: {question: Q
         setChoices([...choices]);
 
     }
-    console.log(question.age);
+    console.log(age,question.age,sex);
     return(
         <Stack style={{ padding: '20px' }} className="ms-Grid">
             <div className="ms-Grid-row">
