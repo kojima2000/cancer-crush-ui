@@ -1,4 +1,4 @@
-import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton } from "@fluentui/react";
+import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image } from "@fluentui/react";
 import { useState } from "react";
 import { choice, Page } from "../TrivialTemplateEngine/TrivialTemplateModel";
 
@@ -46,28 +46,39 @@ export default function PageView({page,nextPageCallback,prevPageCallback}:{page:
             </Stack>
         )
     }
+    page.backGroundImage="someflag";
+    page.question=null;
     return(
         <Stack>
             <Text>{page.name}</Text>
             {page.question &&
             <DocumentCard>
-                <Stack>
-                    <Text>name: {page.question.name}</Text>
-                </Stack>
-                <Stack>                
-                    <Text>age: {page.question.age}</Text>
-                </Stack>
-                <DocumentCard>
+                { page.backGroundImage &&
+                  <Image src='https://fabricweb.azureedge.net/fabric-website/placeholders/350x150.png'/>
+                }
+                { page.question &&
                     <Stack>
-                        <Text>Description:
-                            {page.question.description}</Text>
-                    </Stack>
                     <Stack>
-                        <Text>History: {page.question.history}</Text>
+                        <Text>name: {page.question.name}</Text>
                     </Stack>
-                </DocumentCard>
-                <ChoiceView choices={page.question.choices}/>
-                <DefaultButton text="Submit" onClick={nextPageCallback}/>
+                    <Stack>                
+                        <Text>age: {page.question.age}</Text>
+                    </Stack>
+                    <DocumentCard>
+                        <Stack>
+                            <Text>Description:
+                                {page.question.description}</Text>
+                        </Stack>
+                        <Stack>
+                            <Text>History: {page.question.history}</Text>
+                        </Stack>
+                    </DocumentCard>
+                    <ChoiceView choices={page.question.choices}/>
+                    <Stack style={{textAlign: "right"}}>
+                        <DefaultButton text="Submit" onClick={nextPageCallback}/>                
+                    </Stack>
+                    </Stack>
+                }
             </DocumentCard>
             }
         </Stack>
