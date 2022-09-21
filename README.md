@@ -60,5 +60,3 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 
-## my start command
-## ($env:SSL_CRT_FILE="C:\Users\Da Ziang\Downloads\localhost.crt") -and ($env:SSL_KEY_FILE="C:\Users\Da Ziang\Downloads\localhost.key") -and ($env:HTTPS = "true") -and (npm start)
