@@ -6,6 +6,8 @@ import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import TrivialTemplateCreation from './Components/TrivialTemplateEngine/TrivialTemplateCreation';
 import TrivialRunner from './Components/TrivialRunner/TrivialRunner';
+import NavigationBar from './Components/Navigation/NavigationBar';
+
 const boldStyle: Partial<ITextStyles> = { root: { fontWeight: FontWeights.semibold } };
 const stackTokens: IStackTokens = { childrenGap: 15 };
 const stackStyles: Partial<IStackStyles> = {
@@ -32,13 +34,18 @@ export const App: React.FunctionComponent = () => {
             <link
       rel="stylesheet"
       href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
-      />
+              />
+              <link
+                  rel="stylesheet"
+                  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              />
     </header>
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/test" element={<TrivialTemplateCreation gameObj={{name:"test",chapters:[]}} />}/>
           <Route path="/game" element={<TrivialRunner trivialTemplateModel={gameTestData}/>} />
+          <Route path="/nav" element={<NavigationBar />}/>
       </Routes>
     </BrowserRouter>
     </div>
