@@ -1,4 +1,4 @@
-import { ActionButton, CommandButton, IIconProps, Stack } from "@fluentui/react";
+import { Image, ActionButton, CommandButton, IIconProps, Stack } from "@fluentui/react";
 import { useEffect, useState } from "react";
 import QuestionCreation from "./QuestionCreation";
 import { Chapter, Page, Question } from "./TrivialTemplateModel";
@@ -53,6 +53,27 @@ export default function PageCreation({pages,printGameObject}:{pages:Page[],print
         else{
             return(
             <CommandButton iconProps={addIcon} text="Add Question" onClick={addQuestion}/>
+            )
+        }
+    }
+    //work in progress
+    function ImageForm({page}:{page:Page})
+    {   
+        const [currentImage,setCurrentImage] = useState(page?.backGroundImage)
+        function addImage(event:any){
+            printGameObject();
+            page.backGroundImage=event.target.files[0];
+            setCurrentImage(page.backGroundImage);
+        }
+        if(currentImage)
+        {
+            return (
+                <Image src='https://fabricweb.azureedge.net/fabric-website/placeholders/350x150.png'/>
+            )
+        }
+        else{
+            return(
+                <input type = "file"/>
             )
         }
     }

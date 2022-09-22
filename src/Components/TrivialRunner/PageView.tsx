@@ -1,8 +1,8 @@
-import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image } from "@fluentui/react";
+import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image, Position } from "@fluentui/react";
 import { useEffect, useState } from "react";
 import { choice, Page } from "../TrivialTemplateEngine/TrivialTemplateModel";
 
-export default function PageView({page,nextPageCallback,prevPageCallback}:{page:Page,nextPageCallback:any,prevPageCallback:any})
+export default function PageView({page,nextPageCallback,prevPageCallback,pageButton}:{page:Page,nextPageCallback:any,prevPageCallback:any,pageButton:React.ReactNode})
 {   
     const selectedAnswer=new Set<String>();
 
@@ -33,20 +33,15 @@ export default function PageView({page,nextPageCallback,prevPageCallback}:{page:
     return(
         <Stack>
             <Text>{page.name}</Text>
-            {page.question &&
-            <DocumentCard>
-                { page.backGroundImage &&
-                  <Image src='https://fabricweb.azureedge.net/fabric-website/placeholders/350x150.png'/>
-                }
+            <DocumentCard style={{backgroundImage:"url('/Background1.svg')",width:720,height:500,mixBlendMode:"difference"}}>
                 { page.question &&
                     <Stack>
-                    <Stack>
-                        <Text>name: {page.question.name}</Text>
-                    </Stack>
-                    <Stack>                
-                        <Text>age: {page.question.age}</Text>
-                    </Stack>
-                    <DocumentCard>
+                        <Stack>
+                            <Text>name: {page.question.name}</Text>
+                        </Stack>
+                        <Stack>                
+                            <Text>age: {page.question.age}</Text>
+                        </Stack>
                         <Stack>
                             <Text>Description:
                                 {page.question.description}</Text>
@@ -54,25 +49,25 @@ export default function PageView({page,nextPageCallback,prevPageCallback}:{page:
                         <Stack>
                             <Text>History: {page.question.history}</Text>
                         </Stack>
-                    </DocumentCard>
-                    {console.log(page.question.choices)}
-                    {   
-                        page.question.choices.map((choice:choice)=>
-                            <ChoiceView choice={choice} selectedAnswer={selectedAnswer}/>
-                        )
-                    }
-                    <Stack style={{textAlign: "right"}}>
-                        <DefaultButton text="Submit" onClick={nextPageCallback}/>                
+                        {   
+                            page.question.choices.map((choice:choice)=>
+                                <ChoiceView choice={choice} selectedAnswer={selectedAnswer}/>
+                            )
+                        }
+                        <Stack style={{position:"absolute",bottom:0,left:0}}>
+                            <DefaultButton text="Submit" onClick={nextPageCallback}/>                
+                        </Stack>
                     </Stack>
-                    </Stack>
+
                 }
+                { page.backGroundImage &&
+                    <Image src='./Patient7.svg' style={{position:"absolute",bottom:0,right:0}}/>
+                }
+                {pageButton}
+                <Image src='./Patient7.svg' style={{position:"absolute",bottom:0,right:0}}/>
             </DocumentCard>
-            }
+            
         </Stack>
     )
 }
 
-/**                <Text>{page.question.choices}</Text>
-                <Text>{page.question.description}</Text>
-                <Text>{page.question.history}</Text>
-                <Text>{page.question.age}</Text> */

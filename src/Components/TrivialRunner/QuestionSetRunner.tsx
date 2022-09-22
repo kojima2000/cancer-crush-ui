@@ -20,15 +20,19 @@ export default function QuestionSetRunner({chapters,done}:{chapters:Chapter,done
     }
     return(
         <Stack>
-            <PageView page={chapters.pages[currentPage]} nextPageCallback={NextPage} prevPageCallback={PrevPage}></PageView>
-            <Stack style={{display:"inline",textAlign: "center"}}>
-                {currentPage>0 &&
-                 <IconButton iconProps={prevIcon} onClick={PrevPage}/>
-                }
-                {currentPage<chapters.pages.length-1 &&
-                <IconButton iconProps={nextIcon} onClick={NextPage}/>
-                }
-            </Stack>            
+            <PageView page={chapters.pages[currentPage]} nextPageCallback={NextPage} prevPageCallback={PrevPage}
+            pageButton={
+                    <Stack style={{display:"inline",position:"absolute",bottom:0,left:"50%"}}>
+                    {currentPage>0 &&
+                     <IconButton iconProps={prevIcon} onClick={PrevPage}/>
+                    }
+                    {currentPage<chapters.pages.length-1 &&
+                    <IconButton iconProps={nextIcon} onClick={NextPage}/>
+                    }
+                    </Stack>   
+            }
+            /> 
+      
         </Stack>
     )
 }
