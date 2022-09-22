@@ -29,6 +29,8 @@ export interface Question
     description: string; // this is for question
     choices: choice[];
     caseStudies?: string;
+    correctAnswerText?: string;
+    wrongAnswerText?: string;
 }
 export interface choice
 {   

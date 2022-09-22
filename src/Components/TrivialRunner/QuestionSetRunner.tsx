@@ -12,6 +12,7 @@ export default function QuestionSetRunner({chapters,done}:{chapters:Chapter,done
 
     function NextPage()
     {
+        console.log()
         setCurrentPage(Math.min(chapters.pages.length-1,currentPage+1));
     }
     function PrevPage()

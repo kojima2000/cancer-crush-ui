@@ -1,11 +1,15 @@
-import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image, Position } from "@fluentui/react";
+import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image, Position, shouldWrapFocus } from "@fluentui/react";
 import { useEffect, useState } from "react";
 import { choice, Page } from "../TrivialTemplateEngine/TrivialTemplateModel";
 
 export default function PageView({page,nextPageCallback,prevPageCallback,pageButton}:{page:Page,nextPageCallback:any,prevPageCallback:any,pageButton:React.ReactNode})
 {   
     const selectedAnswer=new Set<String>();
-
+    const [SubmissionText,setSubmissionText]= useState(<Stack/>);
+    useEffect(()=>
+    {
+        setSubmissionText(<Stack/>)
+    },[page])
     function ChoiceView({choice,selectedAnswer}:{choice:choice,selectedAnswer:Set<String>})
     {
         const [userChoice,setUserChoice] = useState(false);
@@ -27,6 +31,27 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
             />
         )
 
+    }
+
+    function submit()
+    {
+        if(selectedAnswer.size>0)
+        {
+            setSubmissionText(
+            <Stack>
+            <b/>
+            <Text style={{borderRadius:"25px",border:"2px solid green"}}>not here{page.question?.correctAnswerText}</Text>
+            </Stack>
+            )
+        }
+        else{
+            setSubmissionText(
+                <Stack>
+                <b/>
+                <Text style={{borderRadius:"25px",border:"2px solid red"}}>testing{page.question?.wrongAnswerText}</Text>
+                </Stack>
+                )
+        }
     }
     page.backGroundImage="someflag";
 
@@ -54,8 +79,11 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                                 <ChoiceView choice={choice} selectedAnswer={selectedAnswer}/>
                             )
                         }
+                        <Stack>
+                            {SubmissionText}
+                        </Stack>
                         <Stack style={{position:"absolute",bottom:0,left:0}}>
-                            <DefaultButton text="Submit" onClick={nextPageCallback}/>                
+                            <DefaultButton text="Submit" onClick={()=>submit()}/>                
                         </Stack>
                     </Stack>
 
@@ -64,7 +92,6 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                     <Image src='./Patient7.svg' style={{position:"absolute",bottom:0,right:0}}/>
                 }
                 {pageButton}
-                <Image src='./Patient7.svg' style={{position:"absolute",bottom:0,right:0}}/>
             </DocumentCard>
             
         </Stack>
