@@ -15,9 +15,9 @@ export interface Page
 {
     //todo check on the optionality of this afterwards
     name?: string;
-    backGroundImage?: File|String;
+    backGroundImage?: File|string;
     description?: string,
-    question: Question;
+    question?: Question;
 }
 
 export interface Question

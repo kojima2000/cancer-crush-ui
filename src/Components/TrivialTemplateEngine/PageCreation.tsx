@@ -1,11 +1,14 @@
 import { ActionButton, CommandButton, IIconProps, Stack } from "@fluentui/react";
-import { useState } from "react";
-import QuestionForm from "./QuestionForm";
-import { Page } from "./TrivialTemplateModel";
+import { useEffect, useState } from "react";
+import QuestionCreation from "./QuestionCreation";
+import { Chapter, Page, Question } from "./TrivialTemplateModel";
 
 export default function PageCreation({pages,printGameObject}:{pages:Page[],printGameObject:any}){
     const [currentPage, setCurrentPage] = useState(pages[0]);
-
+    useEffect(()=>
+    {
+        setCurrentPage(pages[0]);
+    },[pages])
     function Icons({pages}:{pages:Page[]})
     {
         const PageIcon: IIconProps = { iconName: "Document" };
@@ -22,21 +25,36 @@ export default function PageCreation({pages,printGameObject}:{pages:Page[],print
     function createNewPage()
     {
 
-        pages.push({description:"Fill out form",question:{
-            age: 0,
-            sex: "",
-            history: "",
-            description: "",
-            choices: []
-        
-        }});
+        pages.push({});
         setCurrentPage(pages[pages.length-1]);
         printGameObject();
     }
 
-    function setPage()
-    {
-        
+    function QuestionForm({page}:{page:Page})
+    {   
+        const [currentQuestion,setCurrentQuestion] = useState(page?.question)
+        function addQuestion(){
+            printGameObject();
+            page.question={
+                age: 0,
+                sex: "",
+                history: "",
+                description: "",
+                choices: []
+            }
+            setCurrentQuestion(page.question);
+        }
+        if(currentQuestion)
+        {
+            return (
+            <QuestionCreation question={currentQuestion} printGameObject={printGameObject} />
+            )
+        }
+        else{
+            return(
+            <CommandButton iconProps={addIcon} text="Add Question" onClick={addQuestion}/>
+            )
+        }
     }
     const addIcon: IIconProps = { iconName: 'Add' };
     //removed key, add a uuid generator for key feature
@@ -44,8 +62,7 @@ export default function PageCreation({pages,printGameObject}:{pages:Page[],print
         <Stack>
             <Icons pages={pages}/>
             <CommandButton iconProps={addIcon} text="New Page" onClick={createNewPage}/>
-            <div>{currentPage.description}</div>
-            <QuestionForm question={currentPage.question} printGameObject={printGameObject} />;
+            <QuestionForm page={currentPage}/>
         </Stack>
     )
 }
