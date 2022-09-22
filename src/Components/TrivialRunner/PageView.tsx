@@ -1,11 +1,15 @@
-import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image, Position, shouldWrapFocus } from "@fluentui/react";
+import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image, Position, shouldWrapFocus, Modal, IconButton, IIconProps } from "@fluentui/react";
 import { useEffect, useState } from "react";
+import { useBoolean } from "@fluentui/react-hooks"
 import { choice, Page } from "../TrivialTemplateEngine/TrivialTemplateModel";
 
 export default function PageView({page,nextPageCallback,prevPageCallback,pageButton}:{page:Page,nextPageCallback:any,prevPageCallback:any,pageButton:React.ReactNode})
 {   
     const selectedAnswer=new Set<String>();
     const [SubmissionText,setSubmissionText]= useState(<Stack/>);
+    const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
+    const questionMarkIcon: IIconProps = { iconName: 'FeedbackRequestSolid' };
+
     useEffect(()=>
     {
         setSubmissionText(<Stack/>)
@@ -34,7 +38,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
         )
 
     }
-
+    
     function submit()
     {
         if(selectedAnswer.size>0)
@@ -55,23 +59,40 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                 )
         }
     }
-
+    console.log(page.additionalDetail)
     return(
         <Stack>
-            <DocumentCard style={{paddingTop:"50px",paddingBottom:"50px",paddingRight:"50px",paddingLeft:"50px",width:720,height:500,mixBlendMode:"difference",backgroundImage:page.backGroundImage}}>
+            <DocumentCard style={{padding:"50px",width:720,height:500,mixBlendMode:"difference",backgroundImage:page.backGroundImage}}>
                 <Stack>
+                    { page.additionalDetail &&
+                        <Stack>
+                        <Stack style={{position:"absolute",top:0,right:0}}>
+                            <IconButton iconProps={questionMarkIcon} onClick={showModal} />
+                        </Stack>
+                        <Stack>
+                            <Modal 
+                            isOpen={isModalOpen}
+                            onDismiss={hideModal}>
+                            {page.additionalDetail}
+                            </Modal>
+                        </Stack>
+                        </Stack>
+                    }
                     <Text variant="xLarge">{page.name}</Text>
                     <Text variant="large">{page.description}</Text>
                 </Stack>
                 { page.question &&
                     <Stack>
-                        <Stack>
-                            <Text variant="large">
-                                {page.question.description}</Text>
-                        </Stack>
-                        <Stack>
-                            <Text variant="mediumPlus">History: {page.question.history}</Text>
-                        </Stack>
+                        <DocumentCard style={{padding:"5px",borderRadius:"20px"}}>
+                            <Stack>
+                                <Text variant="mediumPlus">{page.question.history}</Text>
+                            </Stack>
+                            <Stack>
+                                <Text variant="large">
+                                    {page.question.description}
+                                </Text>
+                            </Stack>
+                        </DocumentCard>
                         {   
                             page.question.choices.map((choice:choice)=>
                                 <ChoiceView choice={choice} selectedAnswer={selectedAnswer}/>
@@ -81,7 +102,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                             {SubmissionText}
                         </Stack>
                         <Stack style={{position:"absolute",bottom:0,left:0}}>
-                            <DefaultButton style={{background:"none",border:"2px solid"}} text="Submit" onClick={()=>submit()}/>                
+                            <DefaultButton style={{backgroundImage:"url(./Submit%20button.svg)"}} text="Submit" onClick={()=>submit()}/>                
                         </Stack>
                     </Stack>
 

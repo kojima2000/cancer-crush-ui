@@ -16,9 +16,10 @@ export interface Page
     //todo check on the optionality of this afterwards
     name?: string;
     backGroundImage?: string;
-    backGroundImageBinary?: File,
+    backGroundImageBinary?: File | BinaryData,
     description?: string,
     question?: Question;
+    additionalDetail?: string
 }
 
 export interface Question
@@ -32,6 +33,8 @@ export interface Question
     caseStudies?: string;
     correctAnswerText?: string;
     wrongAnswerText?: string;
+    submitButtonBackGroundImage?: string
+    submitButtonBackGroundImageBinary?: File | BinaryData
 }
 export interface choice
 {   
