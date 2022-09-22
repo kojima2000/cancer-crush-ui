@@ -1,10 +1,10 @@
-import { Stack } from "@fluentui/react";
+import { Stack,Text } from "@fluentui/react";
 import ChapterCreation from "./ChapterCreation";
 import { TrivialTemplateModel } from "./TrivialTemplateModel";
 
 export default function TrivialTemplateCreation(props:{gameObj:TrivialTemplateModel}){
     let temp={
-        name:"intialTemplate",
+        name:"Trivial Template",
         chapters:[{
         name:"testeeeeee",
         pages:[
@@ -52,6 +52,17 @@ export default function TrivialTemplateCreation(props:{gameObj:TrivialTemplateMo
         }
         }]}
     ]};
+
+    function Title({title}:{title:string})
+    {
+        return(
+            <Stack>
+                <Text variant="large">
+                {title}
+                </Text>
+            </Stack>
+        )
+    }
     function printGameObject()
     {
         console.log(JSON.stringify(temp));
@@ -59,9 +70,12 @@ export default function TrivialTemplateCreation(props:{gameObj:TrivialTemplateMo
     console.log(JSON.stringify(temp));
     return(
         <Stack>
-            <div className="ms-Grid" dir="ltr">
+            <Stack className="ms-Grid" dir="ltr">
+                <Stack>
+                    {<Title title={temp.name}/>}
+                </Stack>
                 <ChapterCreation chapters={temp.chapters} printGameObject={printGameObject}/>
-            </div>
+            </Stack>
         </Stack>
     )
 }

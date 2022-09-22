@@ -1,4 +1,5 @@
 import React from 'react';
+import "./fonts/Montserrat-Regular.ttf";
 import { Stack, Text, Link, FontWeights, IStackTokens, IStackStyles, ITextStyles, initializeIcons } from '@fluentui/react';
 import logo from './logo.svg';
 import './App.css';

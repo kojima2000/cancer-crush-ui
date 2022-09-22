@@ -1,5 +1,13 @@
+
+@font-face {
+  font-family: "Montserrat-Regular";   /*Can be any text*/
+  src: local("Montserrat-Regular"),
+    url("./fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
 .App {
   text-align: center;
+  font-family: Montserrat;
 }
 
 .App-logo {

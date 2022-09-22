@@ -1,6 +1,6 @@
 import { ActionButton, CommandButton, IIconProps, Stack } from "@fluentui/react";
 import { useState } from "react";
-import QuestionForm from "./TemplateForm";
+import QuestionForm from "./QuestionForm";
 import { Page } from "./TrivialTemplateModel";
 
 export default function PageCreation({pages,printGameObject}:{pages:Page[],printGameObject:any}){

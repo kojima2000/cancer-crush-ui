@@ -7,7 +7,6 @@ import PageView from "./PageView";
 export default function QuestionSetRunner({chapters,done}:{chapters:Chapter,done:any})
 {
     const [currentPage,setCurrentPage]=useState(0);
-    console.log(chapters.pages.length,"pagelength");
     const nextIcon: IIconProps = { iconName: 'next' };
     const prevIcon: IIconProps = { iconName: 'previous' };
 
