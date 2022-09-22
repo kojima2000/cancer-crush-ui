@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { choice, Question } from "./TrivialTemplateModel";
 
 
-export default function QuestionForm({ question, printGameObject }: {question: Question,printGameObject:any}){
+export default function QuestionCreation({ question, printGameObject }: {question: Question,printGameObject:any}){
     console.log(question,"render");
     const [age, setAge] = useState(question.age);
     const [sex, setSex] = useState(question.sex);

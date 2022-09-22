@@ -19,7 +19,8 @@ export interface Page
     backGroundImageBinary?: File | BinaryData,
     description?: string,
     question?: Question;
-    additionalDetail?: string
+    additionalDetail?: string,
+    backgroundImagePeople?: string;
 }
 
 export interface Question

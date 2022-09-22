@@ -28,12 +28,15 @@ let gameTestData={"name":"intialTemplate","chapters":[
     "backGroundImage": "url(./Background%202.svg)",
     "additionalDetail": "Hello I am the helper panel",
     "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
+    "backgroundImagePeople": "./Patient%201.svg",
     "question": {
         "age": 54,
         "sex": "Male",
         "history": "Patient was found to have a Right Upper Lobe Adenocarcinoma. He underwent Right Upper Lobe Lobectomy and systematic mediastinal lymph node dissection. Pathology demonstrated a 2.2 cm tumor of adenocarcinoma histology with negative margins. Additionally, there were no visceral pleural invasion and none of the dissected lymph nodes were positive for carcinoma",
         "description": "What is the next best step in the management of this patient?",
-        correctAnswerText: "You are Correct",
+        correctAnswerText: ""+
+        "Correct!A. Active survelliance"+
+        "Patient has pT1c pN0 (stage 1A3; AJCC 8th Edition Staging System). These patients are often followed with a CT chest every 6 months.",
         wrongAnswerText: "you are wrong",
         "choices": [{
                 "description": "Check for PD-L1",
@@ -56,11 +59,14 @@ let gameTestData={"name":"intialTemplate","chapters":[
     "description": "",
     "backGroundImage": "url(./Background%202.svg)",
     "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
+    "backgroundImagePeople": "./Patient%202.svg",
     "question": {
         "age": 54,
         "sex": "Male",
         "history": "A 49-year-old female was found to have a Right Lower Lobe Adenocarcinoma of the Lung. She underwent Left Lower Lobectomy and systemic mediastinal lymph node dissection. Pathology revealed a 2.9 cm tumor of adenocarcinoma histology with negative margins. There was no visceral pleural involvement but one of the intrapulmonary nodes was positive for carcinoma. PD-L1 expression in tumor cells by SP263 was 100% What will be the most appropriate recommendation for this patient?",
         "description": "What will be the most appropriate recommendation for this patient?",
+        correctAnswerText: "You are Correct",
+        wrongAnswerText: "you are wrong",
         "choices": [{
                 "description": "A. Active surveillance",
                 "acceptedAnswer": false
@@ -82,22 +88,24 @@ let gameTestData={"name":"intialTemplate","chapters":[
     "description": "",
     "backGroundImage": "url(./Background%202.svg)",
     "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
+    "backgroundImagePeople": "./Patient%203.svg",
     "question": {
         "age": 54,
         "sex": "Male",
-        "history": "you are at page2",
-        "description": "What is the next best step in the management of this patient?",
+        "history": "A 67-year-old female was found to have Left-sided Squamous Cell Carcinoma of the Lung. On further staging work up, disease has involved multiple mediastinal lymph nodes (stage IIIA, T2 N2 M0). "
+        +"The disease was unresectable so was recommended to have definitive concurrent chemo and radiation therapy. ",
+        "description": "After completing chemo-radiation, what adjuvant therapy do you recommend?",
         "choices": [{
-                "description": "2",
+                "description": "a.  Osimertinib",
                 "acceptedAnswer": false
             }, {
-                "description": "Check EGFR mutation status",
+                "description": "b. No more therapy but active surveillance",
                 "acceptedAnswer": false
             }, {
-                "description": "4 cycles of platinum-based chemotherapy",
+                "description": "c. Durvalumab maintenance for one year",
                 "acceptedAnswer": false
             }, {
-                "description": "Active surveillance ",
+                "description": " d. 4 cycles of chemotherapy",
                 "acceptedAnswer": true
             }
         ],

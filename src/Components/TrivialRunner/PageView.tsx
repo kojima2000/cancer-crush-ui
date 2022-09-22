@@ -11,7 +11,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
     const questionMarkIcon: IIconProps = { iconName: 'FeedbackRequestSolid' };
 
     useEffect(()=>
-    {
+    {   console.log("working");
         setSubmissionText(<Stack/>)
     },[page])
     function ChoiceView({choice,selectedAnswer}:{choice:choice,selectedAnswer:Set<String>})
@@ -46,7 +46,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
             setSubmissionText(
             <Stack>
             <b/>
-            <Text style={{borderRadius:"25px",border:"2px solid green"}}>{page.question?.correctAnswerText}</Text>
+            <Text style={{padding:"5px",borderRadius:"25px",border:"2px solid green"}}>{page.question?.correctAnswerText}</Text>
             </Stack>
             )
         }
@@ -54,7 +54,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
             setSubmissionText(
                 <Stack>
                 <b/>
-                <Text style={{borderRadius:"25px",border:"2px solid red"}}>{page.question?.wrongAnswerText}</Text>
+                <Text style={{padding:"5px",borderRadius:"25px",border:"2px solid red"}}>{page.question?.wrongAnswerText}</Text>
                 </Stack>
                 )
         }
@@ -83,7 +83,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                 </Stack>
                 { page.question &&
                     <Stack>
-                        <DocumentCard style={{padding:"5px",borderRadius:"20px"}}>
+                        <DocumentCard style={{height:"250px",overflow:"scroll",padding:"5px",borderRadius:"20px"}}>
                             <Stack>
                                 <Text variant="mediumPlus">{page.question.history}</Text>
                             </Stack>
@@ -107,8 +107,8 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                     </Stack>
 
                 }
-                { page.backGroundImage &&
-                    <Image src='./Patient%207.svg' style={{position:"absolute",bottom:0,right:0}}/>
+                { page.backgroundImagePeople &&
+                    <Image src={page.backgroundImagePeople} style={{position:"absolute",bottom:0,right:0}}/>
                 }
                 {pageButton}
             </DocumentCard>
