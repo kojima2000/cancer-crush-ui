@@ -62,7 +62,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
     console.log(page.additionalDetail)
     return(
         <Stack>
-            <DocumentCard style={{padding:"50px",width:720,height:500,mixBlendMode:"difference",backgroundImage:page.backGroundImage}}>
+            <DocumentCard style={{padding:"50px",width:900,height:500,mixBlendMode:"difference",backgroundImage:page.backGroundImage}}>
                 <Stack>
                     { page.additionalDetail &&
                         <Stack>

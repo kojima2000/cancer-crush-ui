@@ -18,11 +18,92 @@ const stackStyles: Partial<IStackStyles> = {
 };
 let gameTestData={"name":"intialTemplate","chapters":[
   {"name":"Brai","pages":
-  [{"name":"Hello","description":"","backGroundImage":"url(./Background%201.svg)"},
-  {"name":"Question 1","description":"","backGroundImage":"url(./Background%202.svg)","additionalDetail":"Hello I am the helper panel","submitButtonBackGroundImage":"url(./Submit%201button.svg)","question":{"age":54,"sex":"Male","history":"Patient was found to have a Right Upper Lobe Adenocarcinoma. He underwent Right Upper Lobe Lobectomy and systematic mediastinal lymph node dissection. Pathology demonstrated a 2.2 cm tumor of adenocarcinoma histology with negative margins. Additionally, there were no visceral pleural invasion and none of the dissected lymph nodes were positive for carcinoma","description":"What is the next best step in the management of this patient?",correctAnswerText:"You are Correct",wrongAnswerText:"you are wrong","choices":[{"description":"Check for PD-L1","acceptedAnswer":false},{"description":"Check EGFR mutation status","acceptedAnswer":false},{"description":"4 cycles of platinum-based chemotherapy","acceptedAnswer":false},{"description":"Active surveillance ","acceptedAnswer":true}],"caseStudies":""}},
-  {"name":"Question 2","description":"","backGroundImage":"url(./Background%202.svg)","submitButtonBackGroundImage":"url(./Submit%201button.svg)","question":{"age":54,"sex":"Male","history":"you are at page2","description":"What is the next best step in the management of this patient?","choices":[{"description":"Check for PD-L1","acceptedAnswer":false},{"description":"Check EGFR mutation status","acceptedAnswer":false},{"description":"4 cycles of platinum-based chemotherapy","acceptedAnswer":false},{"description":"Active surveillance ","acceptedAnswer":true}],"caseStudies":""}},
-  {"name":"Question 3","description":"","backGroundImage":"url(./Background%202.svg)","submitButtonBackGroundImage":"url(./Submit%201button.svg)","question":{"age":54,"sex":"Male","history":"you are at page2","description":"What is the next best step in the management of this patient?","choices":[{"description":"2","acceptedAnswer":false},{"description":"Check EGFR mutation status","acceptedAnswer":false},{"description":"4 cycles of platinum-based chemotherapy","acceptedAnswer":false},{"description":"Active surveillance ","acceptedAnswer":true}],"caseStudies":""}}
-  ]}
+  [{
+    "name": "Hello",
+    "description": "",
+    "backGroundImage": "url(./Background%201.svg)"
+}, {
+    "name": "Question 1",
+    "description": "",
+    "backGroundImage": "url(./Background%202.svg)",
+    "additionalDetail": "Hello I am the helper panel",
+    "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
+    "question": {
+        "age": 54,
+        "sex": "Male",
+        "history": "Patient was found to have a Right Upper Lobe Adenocarcinoma. He underwent Right Upper Lobe Lobectomy and systematic mediastinal lymph node dissection. Pathology demonstrated a 2.2 cm tumor of adenocarcinoma histology with negative margins. Additionally, there were no visceral pleural invasion and none of the dissected lymph nodes were positive for carcinoma",
+        "description": "What is the next best step in the management of this patient?",
+        correctAnswerText: "You are Correct",
+        wrongAnswerText: "you are wrong",
+        "choices": [{
+                "description": "Check for PD-L1",
+                "acceptedAnswer": false
+            }, {
+                "description": "Check EGFR mutation status",
+                "acceptedAnswer": false
+            }, {
+                "description": "4 cycles of platinum-based chemotherapy",
+                "acceptedAnswer": false
+            }, {
+                "description": "Active surveillance ",
+                "acceptedAnswer": true
+            }
+        ],
+        "caseStudies": ""
+    }
+}, {
+    "name": "Question 2",
+    "description": "",
+    "backGroundImage": "url(./Background%202.svg)",
+    "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
+    "question": {
+        "age": 54,
+        "sex": "Male",
+        "history": "A 49-year-old female was found to have a Right Lower Lobe Adenocarcinoma of the Lung. She underwent Left Lower Lobectomy and systemic mediastinal lymph node dissection. Pathology revealed a 2.9 cm tumor of adenocarcinoma histology with negative margins. There was no visceral pleural involvement but one of the intrapulmonary nodes was positive for carcinoma. PD-L1 expression in tumor cells by SP263 was 100% What will be the most appropriate recommendation for this patient?",
+        "description": "What will be the most appropriate recommendation for this patient?",
+        "choices": [{
+                "description": "A. Active surveillance",
+                "acceptedAnswer": false
+            }, {
+                "description": "B. 4 cycles of platinum-based chemotherapy",
+                "acceptedAnswer": false
+            }, {
+                "description": "C. 4 cycles of cisplatin-pemetrexedfollowed by atezolizumab",
+                "acceptedAnswer": false
+            }, {
+                "description": "D. 4 cycles of cisplatin-pemetrexed and check for EGFR mutation status",
+                "acceptedAnswer": true
+            }
+        ],
+        "caseStudies": ""
+    }
+}, {
+    "name": "Question 3",
+    "description": "",
+    "backGroundImage": "url(./Background%202.svg)",
+    "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
+    "question": {
+        "age": 54,
+        "sex": "Male",
+        "history": "you are at page2",
+        "description": "What is the next best step in the management of this patient?",
+        "choices": [{
+                "description": "2",
+                "acceptedAnswer": false
+            }, {
+                "description": "Check EGFR mutation status",
+                "acceptedAnswer": false
+            }, {
+                "description": "4 cycles of platinum-based chemotherapy",
+                "acceptedAnswer": false
+            }, {
+                "description": "Active surveillance ",
+                "acceptedAnswer": true
+            }
+        ],
+        "caseStudies": ""
+    }
+}]}
  ,{"name":"","pages":[]}]};
 initializeIcons();
 export const App: React.FunctionComponent = () => {
