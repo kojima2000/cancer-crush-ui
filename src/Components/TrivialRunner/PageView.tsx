@@ -14,6 +14,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
     {
         const [userChoice,setUserChoice] = useState(false);
         return(
+            <Stack style={{paddingTop:"5px"}}>
             <Checkbox 
             label={choice.description}
             checked={userChoice}
@@ -29,6 +30,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                 console.log(selectedAnswer);
             }}
             />
+            </Stack>
         )
 
     }
@@ -40,7 +42,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
             setSubmissionText(
             <Stack>
             <b/>
-            <Text style={{borderRadius:"25px",border:"2px solid green"}}>not here{page.question?.correctAnswerText}</Text>
+            <Text style={{borderRadius:"25px",border:"2px solid green"}}>{page.question?.correctAnswerText}</Text>
             </Stack>
             )
         }
@@ -48,7 +50,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
             setSubmissionText(
                 <Stack>
                 <b/>
-                <Text style={{borderRadius:"25px",border:"2px solid red"}}>testing{page.question?.wrongAnswerText}</Text>
+                <Text style={{borderRadius:"25px",border:"2px solid red"}}>{page.question?.wrongAnswerText}</Text>
                 </Stack>
                 )
         }
@@ -62,17 +64,17 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                 { page.question &&
                     <Stack>
                         <Stack>
-                            <Text>name: {page.question.name}</Text>
+                            <Text>{page.question.name}</Text>
                         </Stack>
                         <Stack>                
                             <Text>age: {page.question.age}</Text>
                         </Stack>
                         <Stack>
-                            <Text>Description:
+                            <Text variant="large">
                                 {page.question.description}</Text>
                         </Stack>
                         <Stack>
-                            <Text>History: {page.question.history}</Text>
+                            <Text variant="mediumPlus">History: {page.question.history}</Text>
                         </Stack>
                         {   
                             page.question.choices.map((choice:choice)=>
@@ -83,7 +85,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                             {SubmissionText}
                         </Stack>
                         <Stack style={{position:"absolute",bottom:0,left:0}}>
-                            <DefaultButton text="Submit" onClick={()=>submit()}/>                
+                            <DefaultButton style={{background:"none",border:"2px solid"}} text="Submit" onClick={()=>submit()}/>                
                         </Stack>
                     </Stack>
 

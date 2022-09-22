@@ -12,7 +12,6 @@ export default function QuestionSetRunner({chapters,done}:{chapters:Chapter,done
 
     function NextPage()
     {
-        console.log()
         setCurrentPage(Math.min(chapters.pages.length-1,currentPage+1));
     }
     function PrevPage()
@@ -23,7 +22,7 @@ export default function QuestionSetRunner({chapters,done}:{chapters:Chapter,done
         <Stack>
             <PageView page={chapters.pages[currentPage]} nextPageCallback={NextPage} prevPageCallback={PrevPage}
             pageButton={
-                    <Stack style={{display:"inline",position:"absolute",bottom:0,left:"50%"}}>
+                    <Stack style={{display:"inline",bottom:0,position:"absolute",left:"50%"}}>
                     {currentPage>0 &&
                      <IconButton iconProps={prevIcon} onClick={PrevPage}/>
                     }
