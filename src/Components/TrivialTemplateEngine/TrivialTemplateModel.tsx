@@ -15,7 +15,8 @@ export interface Page
 {
     //todo check on the optionality of this afterwards
     name?: string;
-    backGroundImage?: File|string;
+    backGroundImage?: string;
+    backGroundImageBinary?: File,
     description?: string,
     question?: Question;
 }

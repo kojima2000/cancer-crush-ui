@@ -55,20 +55,16 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                 )
         }
     }
-    page.backGroundImage="someflag";
 
     return(
         <Stack>
-            <Text>{page.name}</Text>
-            <DocumentCard style={{backgroundImage:"url('/Background1.svg')",width:720,height:500,mixBlendMode:"difference"}}>
+            <DocumentCard style={{paddingTop:"50px",paddingBottom:"50px",paddingRight:"50px",paddingLeft:"50px",width:720,height:500,mixBlendMode:"difference",backgroundImage:page.backGroundImage}}>
+                <Stack>
+                    <Text variant="xLarge">{page.name}</Text>
+                    <Text variant="large">{page.description}</Text>
+                </Stack>
                 { page.question &&
                     <Stack>
-                        <Stack>
-                            <Text>{page.question.name}</Text>
-                        </Stack>
-                        <Stack>                
-                            <Text>age: {page.question.age}</Text>
-                        </Stack>
                         <Stack>
                             <Text variant="large">
                                 {page.question.description}</Text>
@@ -91,7 +87,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
 
                 }
                 { page.backGroundImage &&
-                    <Image src='./Patient7.svg' style={{position:"absolute",bottom:0,right:0}}/>
+                    <Image src='./Patient%207.svg' style={{position:"absolute",bottom:0,right:0}}/>
                 }
                 {pageButton}
             </DocumentCard>
