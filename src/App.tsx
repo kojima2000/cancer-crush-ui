@@ -37,7 +37,7 @@ let gameTestData={"name":"intialTemplate","chapters":[
         correctAnswerText: ""+
         "Correct!A. Active survelliance"+
         "Patient has pT1c pN0 (stage 1A3; AJCC 8th Edition Staging System). These patients are often followed with a CT chest every 6 months.",
-        wrongAnswerText: "you are wrong",
+        wrongAnswerText: "try again!",
         "choices": [{
                 "description": "Check for PD-L1",
                 "acceptedAnswer": false
@@ -65,8 +65,9 @@ let gameTestData={"name":"intialTemplate","chapters":[
         "sex": "Male",
         "history": "A 49-year-old female was found to have a Right Lower Lobe Adenocarcinoma of the Lung. She underwent Left Lower Lobectomy and systemic mediastinal lymph node dissection. Pathology revealed a 2.9 cm tumor of adenocarcinoma histology with negative margins. There was no visceral pleural involvement but one of the intrapulmonary nodes was positive for carcinoma. PD-L1 expression in tumor cells by SP263 was 100% What will be the most appropriate recommendation for this patient?",
         "description": "What will be the most appropriate recommendation for this patient?",
-        correctAnswerText: "You are Correct",
-        wrongAnswerText: "you are wrong",
+        correctAnswerText: "d. is the correct answer \n"+
+        "Patient has a 2.9 cm tumor with an intrapulmonary node making it a T1c N1 (stage IIB) disease. She will benefit from adjuvant chemotherapy (OS benefit). Additionally, if EGFR-mutant NSCLC, she will also benefit from adjuvant osimertinib (DFS benefit) based on ADAURA trial. In the absence of EGFR mutation, after receiving adjuvant chemotherapy, given the high expression of PD-L1, adjuvant atezolizumab is recommended (DFS benefit) based on the IMPower-010 trial. We strongly recommend checking for driver mutation before recommending adjuvant immunotherapy.",
+        wrongAnswerText: "try again!",
         "choices": [{
                 "description": "A. Active surveillance",
                 "acceptedAnswer": false
@@ -89,6 +90,9 @@ let gameTestData={"name":"intialTemplate","chapters":[
     "backGroundImage": "url(./Background%202.svg)",
     "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
     "backgroundImagePeople": "./Patient%203.svg",
+    "correctAnswerText": "c. is the correct answer \n"+
+    "Patients with NSCLC after receiving definitive chemo-radiation therapy are recommended to receive maintenance durvalumab (PFS and OS benefit) based on the PACIFIC trial.",
+    "wrongAnswerText": "try again!",
     "question": {
         "age": 54,
         "sex": "Male",
@@ -110,8 +114,44 @@ let gameTestData={"name":"intialTemplate","chapters":[
             }
         ],
         "caseStudies": ""
+    }},
+    {
+      "name": "Question 4",
+      "description": "",
+      "backGroundImage": "url(./Background%202.svg)",
+      "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
+      "backgroundImagePeople": "./Patient%203.svg",
+      "correctAnswerText": "e. is the correct answer \n"+
+      "Pembrolizumab-Ipilimumab is an absolute \"no-no\" based on KEYNOTE-598 study which demonstrated adding Ipilimumab to Pembrolizumab did not improve efficacy (no difference in PFS and OS) but was associated with greater toxicity.",
+      "wrongAnswerText": "try again!",
+      "question": {
+          "age": 54,
+          "sex": "Male",
+          "history": "A 67-year-old female was found to have Left-sided Squamous Cell Carcinoma of the Lung. On further staging work up, disease has involved multiple mediastinal lymph nodes (stage IIIA, T2 N2 M0). "
+          +"The disease was unresectable so was recommended to have definitive concurrent chemo and radiation therapy. ",
+          "description": "After completing chemo-radiation, what adjuvant therapy do you recommend?",
+          "choices": [{
+                  "description": "a. Carboplatin-pemetrexed-pembrolizumab ➡ pemetrexed-pembrolizumab",
+                  "acceptedAnswer": false
+              }, {
+                  "description": "b. Carboplatin-paclitaxel-atezolizumab- bevacizumab ➡ atezolizumab-bevacizumab",
+                  "acceptedAnswer": false
+              }, {
+                  "description": "c. Nivolumab-Ipilimumab",
+                  "acceptedAnswer": false
+              }, {
+                  "description": " d. Nivolumab-Ipilimumab-platinum-doublet ➡ Nivolumab-Ipilimumab",
+                  "acceptedAnswer": true
+              },
+              {
+                "description": "  e. Pembrolizumab-Ipilimumab",
+                "acceptedAnswer": true
+              }
+          ],
+          "caseStudies": ""
+      }
     }
-}]}
+]}
  ,{"name":"","pages":[]}]};
 initializeIcons();
 export const App: React.FunctionComponent = () => {
