@@ -6,7 +6,7 @@ export default function TrivialTemplateCreation(props:{gameObj:TrivialTemplateMo
     let temp={
         name:"Trivial Template",
         chapters:[{
-        name:"testeeeeee",
+        name:"",
         pages:[
         {
         description: 'Submit a quiz question',
