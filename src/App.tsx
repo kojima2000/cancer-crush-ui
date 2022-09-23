@@ -7,6 +7,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import TrivialTemplateCreation from './Components/TrivialTemplateEngine/TrivialTemplateCreation';
 import TrivialRunner from './Components/TrivialRunner/TrivialRunner';
 import NavigationBar from './Components/Navigation/NavigationBar';
+import { NavBasicExample } from './Components/Navigation/NavBar';
 
 const boldStyle: Partial<ITextStyles> = { root: { fontWeight: FontWeights.semibold } };
 const stackTokens: IStackTokens = { childrenGap: 15 };
@@ -170,12 +171,20 @@ export const App: React.FunctionComponent = () => {
               />
     </header>
     <BrowserRouter>
-      <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/test" element={<TrivialTemplateCreation gameObj={{name:"test",chapters:[]}} />}/>
-          <Route path="/game" element={<TrivialRunner trivialTemplateModel={gameTestData}/>} />
-          <Route path="/nav" element={<NavigationBar />}/>
-      </Routes>
+      <div className="ms-Grid" dir="ltr">
+      <div className="ms-Grid-row">
+        <div className="ms-Grid-col ms-sm2">
+        <NavBasicExample/>
+        </div>
+        <div className="ms-Grid-col ms-sm10">
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/game/template" element={<TrivialTemplateCreation gameObj={{name:"test",chapters:[]}} />}/>
+            <Route path="/game" element={<TrivialRunner trivialTemplateModel={gameTestData}/>} />
+        </Routes>
+        </div>
+      </div>
+      </div>
     </BrowserRouter>
     </div>
   );
