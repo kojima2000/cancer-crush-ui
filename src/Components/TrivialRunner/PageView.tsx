@@ -1,4 +1,4 @@
-import { Text,Stack, DocumentCard, Checkbox, PrimaryButton, DefaultButton, Image, Position, shouldWrapFocus, Modal, IconButton, IIconProps } from "@fluentui/react";
+import { Text,Stack, DocumentCard, Checkbox, DefaultButton, Image, Modal, IconButton, IIconProps } from "@fluentui/react";
 import { useEffect, useState } from "react";
 import { useBoolean } from "@fluentui/react-hooks"
 import { choice, Page } from "../TrivialTemplateEngine/TrivialTemplateModel";
@@ -41,12 +41,36 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
     
     function submit()
     {
-        if(selectedAnswer.size>0)
+        function checkAnswer()
+        {
+            let correctAnswer=true
+            let acceptedAnswerSet=new Set<String>();
+            if(page.question){
+                for(let index=0;index<page.question.choices.length;index++)
+                {
+                    if(page.question.choices[index].acceptedAnswer)
+                    {
+                        acceptedAnswerSet.add(page.question.choices[index].description)
+                    }
+                }
+                }
+            console.log(acceptedAnswerSet,selectedAnswer);
+            selectedAnswer.forEach((key)=>{
+                if(!acceptedAnswerSet.has(key)){
+                    correctAnswer=false
+                    console.log("4")
+                    return
+                }
+            })
+            console.log("e")
+            return correctAnswer;
+        }
+        if(checkAnswer())
         {
             setSubmissionText(
             <Stack>
             <b/>
-            <Text style={{padding:"5px",borderRadius:"25px",border:"2px solid green"}}>{page.question?.correctAnswerText}</Text>
+            <Text style={{top:"35%",position:"absolute",padding:"5px",borderRadius:"25px",border:"2px solid green",backgroundColor:"white"}}>{page.question?.correctAnswerText}</Text>
             </Stack>
             )
         }
@@ -54,7 +78,7 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
             setSubmissionText(
                 <Stack>
                 <b/>
-                <Text style={{padding:"5px",borderRadius:"25px",border:"2px solid red"}}>{page.question?.wrongAnswerText}</Text>
+                <Text style={{top:"35%",position:"absolute",backgroundColor:"white",padding:"5px",borderRadius:"25px",border:"2px solid red"}}>{page.question?.wrongAnswerText}</Text>
                 </Stack>
                 )
         }
@@ -98,9 +122,6 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                                 <ChoiceView choice={choice} selectedAnswer={selectedAnswer}/>
                             )
                         }
-                        <Stack>
-                            {SubmissionText}
-                        </Stack>
                         <Stack style={{position:"absolute",bottom:0,left:0}}>
                             <DefaultButton style={{backgroundImage:"url(./Submit%20button.svg)"}} text="Submit" onClick={()=>submit()}/>                
                         </Stack>
@@ -111,6 +132,9 @@ export default function PageView({page,nextPageCallback,prevPageCallback,pageBut
                     <Image src={page.backgroundImagePeople} style={{position:"absolute",bottom:0,right:0}}/>
                 }
                 {pageButton}
+                <Stack>
+                    {SubmissionText}
+                </Stack>
             </DocumentCard>
             
         </Stack>

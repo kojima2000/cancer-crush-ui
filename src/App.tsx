@@ -93,15 +93,15 @@ let gameTestData={"name":"intialTemplate","chapters":[
     "backGroundImage": "url(./Background%202.svg)",
     "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
     "backgroundImagePeople": "./Patient%203.svg",
-    "correctAnswerText": "c. is the correct answer \n"+
-    "Patients with NSCLC after receiving definitive chemo-radiation therapy are recommended to receive maintenance durvalumab (PFS and OS benefit) based on the PACIFIC trial.",
-    "wrongAnswerText": "try again!",
     "question": {
         "age": 54,
         "sex": "Male",
         "history": "A 67-year-old female was found to have Left-sided Squamous Cell Carcinoma of the Lung. On further staging work up, disease has involved multiple mediastinal lymph nodes (stage IIIA, T2 N2 M0). "
         +"The disease was unresectable so was recommended to have definitive concurrent chemo and radiation therapy. ",
         "description": "After completing chemo-radiation, what adjuvant therapy do you recommend?",
+        correctAnswerText: "c. is the correct answer \n"+
+        "Patients with NSCLC after receiving definitive chemo-radiation therapy are recommended to receive maintenance durvalumab (PFS and OS benefit) based on the PACIFIC trial.",
+        wrongAnswerText: "try again!",
         "choices": [{
                 "description": "a.  Osimertinib",
                 "acceptedAnswer": false
@@ -110,10 +110,10 @@ let gameTestData={"name":"intialTemplate","chapters":[
                 "acceptedAnswer": false
             }, {
                 "description": "c. Durvalumab maintenance for one year",
-                "acceptedAnswer": false
+                "acceptedAnswer": true
             }, {
                 "description": " d. 4 cycles of chemotherapy",
-                "acceptedAnswer": true
+                "acceptedAnswer": false
             }
         ],
         "caseStudies": ""
@@ -124,15 +124,15 @@ let gameTestData={"name":"intialTemplate","chapters":[
       "backGroundImage": "url(./Background%202.svg)",
       "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
       "backgroundImagePeople": "./Patient%203.svg",
-      "correctAnswerText": "e. is the correct answer \n"+
-      "Pembrolizumab-Ipilimumab is an absolute \"no-no\" based on KEYNOTE-598 study which demonstrated adding Ipilimumab to Pembrolizumab did not improve efficacy (no difference in PFS and OS) but was associated with greater toxicity.",
-      "wrongAnswerText": "try again!",
       "question": {
           "age": 54,
           "sex": "Male",
           "history": "A 67-year-old female was found to have Left-sided Squamous Cell Carcinoma of the Lung. On further staging work up, disease has involved multiple mediastinal lymph nodes (stage IIIA, T2 N2 M0). "
           +"The disease was unresectable so was recommended to have definitive concurrent chemo and radiation therapy. ",
           "description": "After completing chemo-radiation, what adjuvant therapy do you recommend?",
+          correctAnswerText: "e. is the correct answer \n"+
+          "Pembrolizumab-Ipilimumab is an absolute \"no-no\" based on KEYNOTE-598 study which demonstrated adding Ipilimumab to Pembrolizumab did not improve efficacy (no difference in PFS and OS) but was associated with greater toxicity.",
+          wrongAnswerText: "try again!",
           "choices": [{
                   "description": "a. Carboplatin-pemetrexed-pembrolizumab ➡ pemetrexed-pembrolizumab",
                   "acceptedAnswer": false
@@ -144,7 +144,7 @@ let gameTestData={"name":"intialTemplate","chapters":[
                   "acceptedAnswer": false
               }, {
                   "description": " d. Nivolumab-Ipilimumab-platinum-doublet ➡ Nivolumab-Ipilimumab",
-                  "acceptedAnswer": true
+                  "acceptedAnswer": false
               },
               {
                 "description": "  e. Pembrolizumab-Ipilimumab",
