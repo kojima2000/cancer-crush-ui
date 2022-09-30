@@ -29,7 +29,7 @@ let gameTestData={"name":"intialTemplate","chapters":[
     "name": "Question 1",
     "description": "",
     "backGroundImage": "url(./Background%202.svg)",
-    "additionalDetail": "Hello I am the helper panel",
+    "additionalDetail": "Hello how may I help you",
     "submitButtonBackGroundImage": "url(./Submit%201button.svg)",
     "backgroundImagePeople": "./Patient%201.svg",
     "question": {
@@ -176,7 +176,7 @@ export const App: React.FunctionComponent = () => {
         <div className="ms-Grid-col ms-sm2">
         <NavBasicExample/>
         </div>
-        <div className="ms-Grid-col ms-sm10">
+        <div className="ms-Grid-col ms-sm10" style={{display: "flex",justifyContent:"center","paddingRight":"200px"}}>
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/game/template" element={<TrivialTemplateCreation gameObj={{name:"test",chapters:[]}} />}/>
